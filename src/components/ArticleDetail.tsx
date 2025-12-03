@@ -22,7 +22,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ postId }) => {
                  <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-tertiary">
                      <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-2 py-1 rounded-full">
                          <img src="https://picsum.photos/seed/avatar/30/30" className="w-5 h-5 rounded-full" alt="avatar" />
-                         <span>Asteri5m</span>
+                         <span>Bill</span>
                      </div>
                      <span className="flex items-center gap-1"><Calendar size={14}/> {post.date}</span>
                      <span className="flex items-center gap-1"><Eye size={14}/> {post.views}</span>
@@ -72,11 +72,11 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ postId }) => {
             
             <div className="mt-6 bg-(--color-bg-tertiary) rounded-lg p-4 border border-white/5 text-xs text-muted">
                 <p className="font-bold text-tertiary mb-1">python实现全屏弹幕</p>
-                <p className="mb-1 text-accent/80">https://asteri5m.icu/archives/fff7d8fa-947e-4636-8783-d7dc3165c649</p>
+                <p className="mb-1 text-accent/80">https://Bill.icu/archives/fff7d8fa-947e-4636-8783-d7dc3165c649</p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2 pt-2 border-t border-white/5">
                     <div>
                         <span className="block text-dimmed">作者</span>
-                        <span className="text-tertiary">Asteri5m</span>
+                        <span className="text-tertiary">Bill</span>
                     </div>
                      <div>
                         <span className="block text-dimmed">发布于</span>

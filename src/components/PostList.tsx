@@ -21,11 +21,11 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
              {/* Timeline dot for mobile/small views mainly */}
              <div className="absolute left-0 top-6 w-3 h-3 bg-(--color-bg-secondary) rounded-full border-2 border-(--color-bg-primary) sm:hidden"></div>
              
-             <Card className="group cursor-pointer hover:-translate-y-1 transition-transform duration-300" noPadding>
+             <Card className="group cursor-pointer" noPadding>
                 <div onClick={() => onPostClick(post.id)} className="flex flex-col md:flex-row">
                     {post.cover && (
                         <div className="md:w-64 h-48 md:h-auto relative overflow-hidden">
-                            <img src={post.cover} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
                             {index === 0 && <div className="absolute top-2 left-2 px-2 py-0.5 bg-accent/80 backdrop-blur-sm text-[10px] text-white rounded">置顶</div>}
                         </div>
                     )}
@@ -41,7 +41,7 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
                         <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-2">
                              <div className="flex items-center gap-2">
                                 <img src="https://picsum.photos/seed/avatar/30/30" className="w-6 h-6 rounded-full" alt="avatar" />
-                                <span className="text-xs text-muted">Asteri5m</span>
+                                <span className="text-xs text-muted">Bill</span>
                              </div>
                              <MoreHorizontal size={16} className="text-dimmed" />
                         </div>
@@ -60,11 +60,11 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
        {MOCK_POSTS.slice(3).map((post) => (
          <div key={post.id} className="relative pl-6 sm:pl-0">
              <div className="absolute left-0 top-6 w-3 h-3 bg-(--color-bg-secondary) rounded-full border-2 border-(--color-bg-primary) sm:hidden"></div>
-             <Card className="group cursor-pointer hover:-translate-y-1 transition-transform duration-300" noPadding>
+             <Card className="group cursor-pointer" noPadding>
                 <div onClick={() => onPostClick(post.id)} className="flex flex-col md:flex-row">
                     {post.cover && (
                          <div className="md:w-48 h-32 md:h-auto relative overflow-hidden shrink-0">
-                            <img src={post.cover} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
                         </div>
                     )}
                     <div className="p-4 flex-1">

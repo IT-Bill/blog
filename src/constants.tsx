@@ -97,7 +97,7 @@ export const RECENT_COMMENTS: Comment[] = [
   },
   {
     id: '2',
-    author: 'Asteri5m',
+    author: 'Bill',
     avatar: 'https://picsum.photos/seed/avatar/50/50',
     date: '2025-08-26',
     content: '哦？官方评论组件支持显示用户浏览器信息了诶，试一试。',

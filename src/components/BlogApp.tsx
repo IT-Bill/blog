@@ -56,12 +56,7 @@ export default function BlogApp() {
 
       {/* Footer */}
       <footer className="mt-20 text-center text-xs text-dimmed pb-8">
-        <p>© 2021-2025 • Asteri5m的小破站 • Powered by Halo & Dream2.0 Plus</p>
-        <div className="flex justify-center items-center gap-2 mt-2">
-           <span className="w-4 h-4 rounded-full bg-(--color-bg-secondary) block"></span>
-           <span>蜀ICP备2021029058号</span>
-           <span>川公网安备 51011202000479号</span>
-        </div>
+        <p>© 2025 • Bill的小破站 • Powered by Astro</p>
         <p className="mt-1">建站 1506 天 03 时 59 分 27 秒</p>
       </footer>
 

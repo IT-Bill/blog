@@ -19,7 +19,7 @@ export const Sidebar: React.FC = () => {
           <div className="absolute bottom-0 right-0 bg-success w-5 h-5 rounded-full border-4 border-(--color-bg-secondary)"></div>
         </div>
         
-        <h2 className="text-xl font-bold text-white mb-1">Asteri5m</h2>
+        <h2 className="text-xl font-bold text-white mb-1">Bill</h2>
         <p className="text-sm text-muted mb-6">这件事很难给你解释...</p>
         
         <div className="flex justify-center gap-8 mb-6 border-t border-b border-white/5 py-4">
