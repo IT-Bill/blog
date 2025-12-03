@@ -68,7 +68,7 @@ export default function BlogApp() {
       {/* Back to top button */}
       <button 
         onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-        className="fixed bottom-8 right-8 p-3 bg-(--color-accent)/80 hover:bg-(--color-accent) text-white rounded-full shadow-lg backdrop-blur-sm transition-all z-40 hidden md:block"
+        className="fixed bottom-8 right-8 p-3 bg-accent/80 hover:bg-accent text-white rounded-full shadow-lg backdrop-blur-sm transition-all z-40 hidden md:block"
       >
         <ArrowUp size={20} />
       </button>

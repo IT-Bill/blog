@@ -34,7 +34,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ postId }) => {
 
         <Card className="mb-6">
             {/* Note block mimicking screenshot 3 top part */}
-            <div className="bg-(--color-success)/10 border-l-4 border-(--color-border-success) p-4 rounded-r mb-8 text-sm text-tertiary">
+            <div className="bg-success/10 border-l-4 border-(--color-border-success) p-4 rounded-r mb-8 text-sm text-tertiary">
                 <p>如果有下次，我希望我不是那个主动的人。</p>
             </div>
 
@@ -58,7 +58,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ postId }) => {
             {/* Copyright / Footer of article */}
             <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                  <div className="flex gap-4">
-                     <button className="flex items-center gap-2 px-4 py-2 bg-(--color-warning)/10 hover:bg-(--color-warning)/20 text-warning rounded-full text-sm transition-colors border border-(--color-warning)/20">
+                     <button className="flex items-center gap-2 px-4 py-2 bg-warning/10 hover:bg-warning/20 text-warning rounded-full text-sm transition-colors border border-warning/20">
                          <DollarSign size={16} /> 打赏
                      </button>
                      <button className="flex items-center gap-2 px-4 py-2 bg-(--color-bg-secondary)/30 hover:bg-(--color-bg-secondary)/50 text-tertiary rounded-full text-sm transition-colors border border-white/5">
@@ -115,7 +115,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({ postId }) => {
                     <div className="flex gap-2">
                         <input type="text" placeholder="昵称" className="bg-(--color-bg-primary) border border-white/10 rounded px-2 py-1 text-xs text-white" />
                         <input type="text" placeholder="邮箱" className="bg-(--color-bg-primary) border border-white/10 rounded px-2 py-1 text-xs text-white hidden md:block" />
-                         <button className="px-4 py-1 bg-(--color-success) hover:bg-(--color-success)/80 text-white text-xs rounded transition-colors">提交评论</button>
+                         <button className="px-4 py-1 bg-success hover:bg-success/80 text-white text-xs rounded transition-colors">提交评论</button>
                     </div>
                 </div>
             </div>

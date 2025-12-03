@@ -28,9 +28,9 @@ export const Navbar: React.FC = () => {
           <input 
             type="text" 
             placeholder="搜索内容..." 
-            className="w-48 bg-(--color-bg-secondary)/50 border border-(--color-bg-secondary) rounded-full py-1.5 pl-4 pr-10 text-sm text-secondary focus:outline-none focus:border-(--color-accent) focus:ring-1 focus:ring-(--color-accent) transition-all"
+            className="w-48 bg-(--color-bg-secondary)/50 border border-(--color-bg-secondary) rounded-full py-1.5 pl-4 pr-10 text-sm text-secondary focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
           />
-          <button className="absolute right-1 top-1 p-1 bg-(--color-accent)/20 rounded-full text-accent hover:text-accent-hover">
+          <button className="absolute right-1 top-1 p-1 bg-accent/20 rounded-full text-accent hover:text-accent-hover">
             <Search size={14} />
           </button>
         </div>

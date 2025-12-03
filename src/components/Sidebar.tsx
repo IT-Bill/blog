@@ -9,14 +9,14 @@ export const Sidebar: React.FC = () => {
       {/* Profile Card */}
       <Card className="text-center pt-8 pb-6">
         <div className="relative inline-block mb-4 group">
-          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-(--color-accent) to-(--color-text-purple) mx-auto">
+          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-accent to-(--color-text-purple) mx-auto">
             <img 
               src="https://picsum.photos/seed/avatar/200/200" 
               alt="Avatar" 
               className="w-full h-full rounded-full object-cover border-4 border-(--color-bg-secondary)"
             />
           </div>
-          <div className="absolute bottom-0 right-0 bg-(--color-success) w-5 h-5 rounded-full border-4 border-(--color-bg-secondary)"></div>
+          <div className="absolute bottom-0 right-0 bg-success w-5 h-5 rounded-full border-4 border-(--color-bg-secondary)"></div>
         </div>
         
         <h2 className="text-xl font-bold text-white mb-1">Asteri5m</h2>
@@ -61,7 +61,7 @@ export const Sidebar: React.FC = () => {
                <div className="text-[10px] text-white/70">00:00 / 02:18</div>
              </div>
              <div className="h-1 bg-white/20 rounded-full overflow-hidden">
-               <div className="h-full w-1/3 bg-(--color-accent-hover) rounded-full"></div>
+               <div className="h-full w-1/3 bg-accent-hover rounded-full"></div>
              </div>
            </div>
            
@@ -111,7 +111,7 @@ export const Sidebar: React.FC = () => {
         </div>
         <div className="p-3 flex flex-wrap gap-2">
             {['Halo', 'Tool', 'Earth Online', 'Pwn', 'HarmonyOS', 'Android', 'Mac', 'Python', 'Reverse', 'Crypto'].map((tag, i) => (
-                <span key={i} className={`text-xs px-2 py-1 rounded border border-white/10 hover:bg-(--color-accent)/20 hover:border-(--color-accent)/50 hover:text-accent-hover transition-colors cursor-pointer ${
+                <span key={i} className={`text-xs px-2 py-1 rounded border border-white/10 hover:bg-accent/20 hover:border-accent/50 hover:text-accent-hover transition-colors cursor-pointer ${
                     i % 3 === 0 ? 'text-(--color-text-purple)' : i % 2 === 0 ? 'text-success' : 'text-accent'
                 }`}>
                     {tag}

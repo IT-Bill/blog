@@ -26,7 +26,7 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
                     {post.cover && (
                         <div className="md:w-64 h-48 md:h-auto relative overflow-hidden">
                             <img src={post.cover} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                            {index === 0 && <div className="absolute top-2 left-2 px-2 py-0.5 bg-(--color-accent)/80 backdrop-blur-sm text-[10px] text-white rounded">置顶</div>}
+                            {index === 0 && <div className="absolute top-2 left-2 px-2 py-0.5 bg-accent/80 backdrop-blur-sm text-[10px] text-white rounded">置顶</div>}
                         </div>
                     )}
                     <div className="p-5 flex-1 flex flex-col justify-between">
