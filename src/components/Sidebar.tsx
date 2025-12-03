@@ -3,13 +3,13 @@ import { Github, Mail, Rss, Bell, Music, ChevronRight, Hash, Database, FileText,
 import { Card } from './Card';
 import { MOCK_POSTS, CATEGORIES } from '../constants';
 
-export const LeftSidebar: React.FC = () => {
+export const Sidebar: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Profile Card */}
       <Card className="text-center pt-8 pb-6">
         <div className="relative inline-block mb-4 group">
-          <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-blue-500 to-purple-500 mx-auto">
+          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-blue-500 to-purple-500 mx-auto">
             <img 
               src="https://picsum.photos/seed/avatar/200/200" 
               alt="Avatar" 
@@ -53,7 +53,7 @@ export const LeftSidebar: React.FC = () => {
         </div>
         <div className="h-28 overflow-hidden relative">
            <img src="https://picsum.photos/seed/music/500/300" className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt="Music Cover" />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"></div>
            
            <div className="absolute bottom-3 left-3 right-3">
              <div className="flex justify-between items-end mb-1">
@@ -66,7 +66,7 @@ export const LeftSidebar: React.FC = () => {
            </div>
            
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform">
-             <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-1"></div>
+             <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-10 border-l-white border-b-[6px] border-b-transparent ml-1"></div>
            </div>
         </div>
       </Card>
