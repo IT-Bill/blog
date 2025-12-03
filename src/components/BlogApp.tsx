@@ -55,10 +55,10 @@ export default function BlogApp() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-20 text-center text-xs text-slate-500 pb-8">
+      <footer className="mt-20 text-center text-xs text-dimmed pb-8">
         <p>© 2021-2025 • Asteri5m的小破站 • Powered by Halo & Dream2.0 Plus</p>
         <div className="flex justify-center items-center gap-2 mt-2">
-           <span className="w-4 h-4 rounded-full bg-slate-700 block"></span>
+           <span className="w-4 h-4 rounded-full bg-(--color-bg-secondary) block"></span>
            <span>蜀ICP备2021029058号</span>
            <span>川公网安备 51011202000479号</span>
         </div>
@@ -68,7 +68,7 @@ export default function BlogApp() {
       {/* Back to top button */}
       <button 
         onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-        className="fixed bottom-8 right-8 p-3 bg-blue-500/80 hover:bg-blue-500 text-white rounded-full shadow-lg backdrop-blur-sm transition-all z-40 hidden md:block"
+        className="fixed bottom-8 right-8 p-3 bg-(--color-accent)/80 hover:bg-(--color-accent) text-white rounded-full shadow-lg backdrop-blur-sm transition-all z-40 hidden md:block"
       >
         <ArrowUp size={20} />
       </button>

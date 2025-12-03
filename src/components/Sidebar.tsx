@@ -9,35 +9,35 @@ export const Sidebar: React.FC = () => {
       {/* Profile Card */}
       <Card className="text-center pt-8 pb-6">
         <div className="relative inline-block mb-4 group">
-          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-blue-500 to-purple-500 mx-auto">
+          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-(--color-accent) to-(--color-text-purple) mx-auto">
             <img 
               src="https://picsum.photos/seed/avatar/200/200" 
               alt="Avatar" 
-              className="w-full h-full rounded-full object-cover border-4 border-[#1e293b]"
+              className="w-full h-full rounded-full object-cover border-4 border-(--color-bg-secondary)"
             />
           </div>
-          <div className="absolute bottom-0 right-0 bg-green-500 w-5 h-5 rounded-full border-4 border-[#1e293b]"></div>
+          <div className="absolute bottom-0 right-0 bg-(--color-success) w-5 h-5 rounded-full border-4 border-(--color-bg-secondary)"></div>
         </div>
         
         <h2 className="text-xl font-bold text-white mb-1">Asteri5m</h2>
-        <p className="text-sm text-slate-400 mb-6">这件事很难给你解释...</p>
+        <p className="text-sm text-muted mb-6">这件事很难给你解释...</p>
         
         <div className="flex justify-center gap-8 mb-6 border-t border-b border-white/5 py-4">
           <div className="text-center">
             <div className="text-lg font-bold text-white">38</div>
-            <div className="text-xs text-slate-500 uppercase">文章</div>
+            <div className="text-xs text-dimmed uppercase">文章</div>
           </div>
           <div className="text-center">
             <div className="text-lg font-bold text-white">8</div>
-            <div className="text-xs text-slate-500 uppercase">分类</div>
+            <div className="text-xs text-dimmed uppercase">分类</div>
           </div>
           <div className="text-center">
             <div className="text-lg font-bold text-white">44</div>
-            <div className="text-xs text-slate-500 uppercase">评论</div>
+            <div className="text-xs text-dimmed uppercase">评论</div>
           </div>
         </div>
         
-        <div className="flex justify-center gap-6 text-slate-400">
+        <div className="flex justify-center gap-6 text-muted">
           <Github size={20} className="hover:text-white cursor-pointer transition-colors" />
           <Bell size={20} className="hover:text-white cursor-pointer transition-colors" />
           <Mail size={20} className="hover:text-white cursor-pointer transition-colors" />
@@ -61,7 +61,7 @@ export const Sidebar: React.FC = () => {
                <div className="text-[10px] text-white/70">00:00 / 02:18</div>
              </div>
              <div className="h-1 bg-white/20 rounded-full overflow-hidden">
-               <div className="h-full w-1/3 bg-blue-400 rounded-full"></div>
+               <div className="h-full w-1/3 bg-(--color-accent-hover) rounded-full"></div>
              </div>
            </div>
            
@@ -75,13 +75,13 @@ export const Sidebar: React.FC = () => {
       <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
             <span className="flex items-center gap-2 text-sm font-medium"><FileText size={16}/> 最新文章</span>
-            <span className="text-xs text-slate-500 cursor-pointer hover:text-blue-400">更多 »</span>
+            <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
         <div className="divide-y divide-white/5">
             {MOCK_POSTS.slice(0, 5).map(post => (
                 <div key={post.id} className="p-3 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
-                    <span className="text-sm text-slate-300 group-hover:text-blue-400 truncate max-w-[180px]">{post.title}</span>
-                    <ChevronRight size={14} className="text-slate-600 group-hover:text-blue-400" />
+                    <span className="text-sm text-tertiary group-hover:text-accent truncate max-w-[180px]">{post.title}</span>
+                    <ChevronRight size={14} className="text-dimmed group-hover:text-accent" />
                 </div>
             ))}
         </div>
@@ -91,13 +91,13 @@ export const Sidebar: React.FC = () => {
       <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
             <span className="flex items-center gap-2 text-sm font-medium"><Layers size={16}/> 分类</span>
-            <span className="text-xs text-slate-500 cursor-pointer hover:text-blue-400">更多 »</span>
+            <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
         <div className="p-2">
             {CATEGORIES.map((cat, i) => (
-                <div key={i} className="flex justify-between items-center p-2 rounded hover:bg-white/5 cursor-pointer text-sm text-slate-300">
+                <div key={i} className="flex justify-between items-center p-2 rounded hover:bg-white/5 cursor-pointer text-sm text-tertiary">
                     <span>{cat.name}</span>
-                    <span className="bg-slate-700/50 px-1.5 py-0.5 rounded text-xs text-slate-400">{cat.count}</span>
+                    <span className="bg-(--color-bg-secondary)/50 px-1.5 py-0.5 rounded text-xs text-muted">{cat.count}</span>
                 </div>
             ))}
         </div>
@@ -107,12 +107,12 @@ export const Sidebar: React.FC = () => {
        <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
             <span className="flex items-center gap-2 text-sm font-medium"><Hash size={16}/> 标签</span>
-            <span className="text-xs text-slate-500 cursor-pointer hover:text-blue-400">更多 »</span>
+            <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
         <div className="p-3 flex flex-wrap gap-2">
             {['Halo', 'Tool', 'Earth Online', 'Pwn', 'HarmonyOS', 'Android', 'Mac', 'Python', 'Reverse', 'Crypto'].map((tag, i) => (
-                <span key={i} className={`text-xs px-2 py-1 rounded border border-white/10 hover:bg-blue-500/20 hover:border-blue-500/50 hover:text-blue-300 transition-colors cursor-pointer ${
-                    i % 3 === 0 ? 'text-purple-300' : i % 2 === 0 ? 'text-green-300' : 'text-blue-300'
+                <span key={i} className={`text-xs px-2 py-1 rounded border border-white/10 hover:bg-(--color-accent)/20 hover:border-(--color-accent)/50 hover:text-accent-hover transition-colors cursor-pointer ${
+                    i % 3 === 0 ? 'text-(--color-text-purple)' : i % 2 === 0 ? 'text-success' : 'text-accent'
                 }`}>
                     {tag}
                 </span>
