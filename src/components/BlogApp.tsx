@@ -7,9 +7,7 @@ import { ArrowUp } from 'lucide-react';
 export default function BlogApp() {
   return (
     <div className="min-h-screen pb-12">
-      <a href="/" className="cursor-pointer">
-        <Navbar />
-      </a>
+      <Navbar />
 
       <main className="container mx-auto px-4 md:px-6 pt-18">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

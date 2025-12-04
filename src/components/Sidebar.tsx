@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Mail, Rss, Bell, Music, ChevronRight, Hash, Database, FileText, Layers } from 'lucide-react';
+import { Github, Mail, Rss, Bell, Music, ChevronRight, Hash, FileText, Layers, Link } from 'lucide-react';
 import { Card } from './Card';
 import { MOCK_POSTS, CATEGORIES } from '../constants';
 
@@ -77,11 +77,11 @@ export const Sidebar: React.FC = () => {
             <span className="flex items-center gap-2 text-primary text-sm font-medium"><FileText size={16}/> 最新文章</span>
             <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
-        <div className="divide-y divide-white/5">
+        <div className="">
             {MOCK_POSTS.slice(0, 5).map(post => (
-                <a key={post.id} href={`/posts/${post.id}`} className="p-3 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
+                <a key={post.id} href={`/posts/${post.id}`} className="px-3 py-2 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
                     <span className="text-sm text-tertiary group-hover:text-accent truncate max-w-[180px]">{post.title}</span>
-                    <ChevronRight size={14} className="text-dimmed group-hover:text-accent" />
+                    <Link size={12} className="text-dimmed group-hover:text-accent transition-transform duration-300 group-hover:rotate-225" />
                 </a>
             ))}
         </div>
@@ -93,9 +93,9 @@ export const Sidebar: React.FC = () => {
             <span className="flex items-center gap-2 text-primary text-sm font-medium"><Layers size={16}/> 分类</span>
             <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
-        <div className="p-2">
+        <div className="p-1">
             {CATEGORIES.map((cat, i) => (
-                <div key={i} className="flex justify-between items-center p-2 rounded hover:bg-white/5 cursor-pointer text-sm text-tertiary">
+                <div key={i} className="flex justify-between items-center p-1.5 rounded hover:bg-white/5 cursor-pointer text-sm text-tertiary">
                     <span>{cat.name}</span>
                     <span className="bg-(--color-bg-secondary)/50 px-1.5 py-0.5 rounded text-xs text-muted">{cat.count}</span>
                 </div>
@@ -111,7 +111,7 @@ export const Sidebar: React.FC = () => {
         </div>
         <div className="p-3 flex flex-wrap gap-2">
             {['Halo', 'Tool', 'Earth Online', 'Pwn', 'HarmonyOS', 'Android', 'Mac', 'Python', 'Reverse', 'Crypto'].map((tag, i) => (
-                <span key={i} className={`text-xs px-2 py-1 rounded border border-white/10 hover:bg-accent/20 hover:border-accent/50 hover:text-accent-hover transition-colors cursor-pointer ${
+                <span key={i} className={`text-xs px-2 py-1 rounded border border-white/10 hover:bg-accent/20 hover:border-accent/50 transition-colors cursor-pointer ${
                     i % 3 === 0 ? 'text-(--color-text-purple)' : i % 2 === 0 ? 'text-success' : 'text-accent'
                 }`}>
                     {tag}
