@@ -59,7 +59,7 @@ const posts: Post[] = allPosts.map(post => ({
 			<div class="star"></div>
 		</div>
 
-		<div class="min-h-screen pb-12">
+		<div class="min-h-screen">
 			<Navbar client:load />
 
 			<main class="container mx-auto px-4 md:px-6 pt-18">
@@ -90,9 +90,9 @@ const posts: Post[] = allPosts.map(post => ({
 			</main>
 
 			<!-- Footer -->
-			<footer class="mt-20 text-center text-xs text-dimmed pb-8">
+			<footer class="mt-20 text-center text-xs text-dimmed py-8 bg-(--color-bg-card) border-t border-white/5">
 				<p>© 2025 • Bill的小破站 • Powered by Astro</p>
-				<p class="mt-1">建站 1506 天 03 时 59 分 27 秒</p>
+				<p class="mt-1">建站 <span id="site-uptime">0 天 00 时 00 分 00 秒</span></p>
 			</footer>
 
 			<!-- Back to top button -->
@@ -116,6 +116,37 @@ const posts: Post[] = allPosts.map(post => ({
 			
 			// 视图过渡后重新初始化
 			document.addEventListener('astro:after-swap', initBackToTop);
+		</script>
+
+		<script>
+			// 建站时间计算 - 从 2025年12月4日 00:00:00 UTC+8 开始
+			function updateUptime() {
+				const startTime = new Date('2025-12-04T00:00:00+08:00').getTime();
+				const now = Date.now();
+				const diff = now - startTime;
+				
+				if (diff < 0) {
+					document.getElementById('site-uptime')!.textContent = '0 天 00 时 00 分 00 秒';
+					return;
+				}
+				
+				const seconds = Math.floor(diff / 1000) % 60;
+				const minutes = Math.floor(diff / (1000 * 60)) % 60;
+				const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+				const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+				
+				const pad = (n: number) => n.toString().padStart(2, '0');
+				document.getElementById('site-uptime')!.textContent = `${days} 天 ${pad(hours)} 时 ${pad(minutes)} 分 ${pad(seconds)} 秒`;
+			}
+			
+			// 初始化并每秒更新
+			updateUptime();
+			setInterval(updateUptime, 1000);
+			
+			// 视图过渡后重新初始化
+			document.addEventListener('astro:after-swap', () => {
+				updateUptime();
+			});
 		</script>
 
 		<script>
