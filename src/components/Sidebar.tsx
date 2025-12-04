@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Github, Mail, Rss, Bell, Music, ChevronRight, Hash, FileText, Layers, Link as LinkIcon } from 'lucide-react';
-import { Card } from './Card';
-import { Link } from './Link';
-import type { Post } from '../types';
+import { Card } from '@/components/Card';
+import { Link } from '@/components/Link';
+import type { Post } from '@/types';
 
 interface SidebarProps {
   posts: Post[];

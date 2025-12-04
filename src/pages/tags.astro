@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import type { Post } from '../types';
-import { TagsList } from '../components/TagsList';
+import type { Post } from '@/types';
+import { TagsList } from '@/components/TagsList';
 
 // 获取所有文章
 const allPosts = await getCollection('posts');

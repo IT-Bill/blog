@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import { Card } from './Card';
-import { Link } from './Link';
+import { Card } from '@/components/Card';
+import { Link } from '@/components/Link';
 import { Hash, FileText } from 'lucide-react';
-import type { Post } from '../types';
+import type { Post } from '@/types';
 
 interface TagsListProps {
   posts: Post[];

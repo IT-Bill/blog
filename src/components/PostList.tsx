@@ -1,8 +1,8 @@
 import React from 'react';
 import { Calendar, Folder } from 'lucide-react';
-import { Card } from './Card';
-import { Link } from './Link';
-import type { Post } from '../types';
+import { Card } from '@/components/Card';
+import { Link } from '@/components/Link';
+import type { Post } from '@/types';
 
 interface PostListProps {
   posts: Post[];

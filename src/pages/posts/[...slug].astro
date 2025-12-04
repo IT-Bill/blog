@@ -1,10 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 import { Calendar, Eye, MessageSquare, Clock, ThumbsUp, DollarSign, List } from 'lucide-react';
 import fs from 'node:fs';
 import path from 'node:path';
+import { Link } from '@/components/Link';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -150,9 +151,9 @@ const { Content, headings } = await render(post);
 
       <!-- Back to home -->
       <div class="mt-8 text-center">
-        <a href="/" class="inline-flex items-center gap-2 text-accent hover:underline">
+        <Link href="/" className="inline-flex items-center gap-2 text-accent hover:underline">
           ← 返回首页
-        </a>
+        </Link>
       </div>
     </div>
 

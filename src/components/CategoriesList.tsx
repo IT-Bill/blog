@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import { Card } from './Card';
-import { Link } from './Link';
+import { Card } from '@/components/Card';
+import { Link } from '@/components/Link';
 import { Layers, ChevronRight, FileText } from 'lucide-react';
-import type { Post } from '../types';
+import type { Post } from '@/types';
 
 interface CategoriesListProps {
   posts: Post[];
