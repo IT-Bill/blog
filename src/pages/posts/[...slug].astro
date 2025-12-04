@@ -1,0 +1,222 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Calendar, Eye, MessageSquare, Clock, ThumbsUp, DollarSign } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <main class="container mx-auto px-4 md:px-6 pt-18">
+    <div class="max-w-4xl mx-auto">
+      <article class="animate-fade-in">
+        <!-- Banner Image -->
+        <div class="h-64 md:h-80 w-full rounded-2xl overflow-hidden mb-6 relative group">
+          <img 
+            src={post.data.cover || "https://picsum.photos/seed/default/800/400"} 
+            class="w-full h-full object-cover" 
+            alt={post.data.title} 
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-(--color-bg-primary) via-transparent to-transparent opacity-80"></div>
+          <div class="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+            <h1 class="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">{post.data.title}</h1>
+            <div class="flex flex-wrap items-center gap-4 text-xs md:text-sm text-tertiary">
+              <div class="flex items-center gap-1.5 bg-black/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                <img src="https://picsum.photos/seed/avatar/30/30" class="w-5 h-5 rounded-full" alt="avatar" />
+                <span>Bill</span>
+              </div>
+              <span class="flex items-center gap-1">
+                <Calendar size={14} />
+                {post.data.date}
+              </span>
+              <span class="flex items-center gap-1">
+                <Eye size={14} />
+                {post.data.views}
+              </span>
+              <span class="flex items-center gap-1">
+                <MessageSquare size={14} />
+                {post.data.comments}
+              </span>
+              <span class="flex items-center gap-1">
+                <Clock size={14} />
+                15 分钟
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-6">
+            {post.data.tags.map((tag: string) => (
+              <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <!-- Content Card -->
+        <div class="bg-(--color-bg-card) backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/5 mb-6">
+          <!-- Note block -->
+          <div class="bg-success/10 border-l-4 border-(--color-border-success) p-4 rounded-r mb-8 text-sm text-tertiary">
+            <p>如果有下次，我希望我不是那个主动的人。</p>
+          </div>
+
+          <!-- Quote block -->
+          <div class="relative p-6 mb-8 text-center">
+            <div class="text-xl md:text-2xl font-serif italic text-secondary relative z-10 leading-relaxed">
+              其实我也被谁坚定地选择一次<br/>
+              人这一生，最怕突然想通又突然心痛<br/>
+              我笑着说没关系，其实已经碎了一地
+            </div>
+            <div class="absolute -top-4 -left-2 text-6xl text-white/5 font-serif">"</div>
+            <div class="absolute -bottom-10 -right-2 text-6xl text-white/5 font-serif">"</div>
+          </div>
+
+          <!-- Markdown Content -->
+          <div class="prose prose-invert prose-sm md:prose-base max-w-none text-tertiary">
+            <Content />
+          </div>
+
+          <!-- Copyright / Footer of article -->
+          <div class="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex gap-4">
+              <button class="flex items-center gap-2 px-4 py-2 bg-warning/10 hover:bg-warning/20 text-warning rounded-full text-sm transition-colors border border-warning/20">
+                <DollarSign size={16} /> 打赏
+              </button>
+              <button class="flex items-center gap-2 px-4 py-2 bg-(--color-bg-secondary)/30 hover:bg-(--color-bg-secondary)/50 text-tertiary rounded-full text-sm transition-colors border border-white/5">
+                <ThumbsUp size={16} /> 赞 2
+              </button>
+            </div>
+            <div class="text-xs text-dimmed text-center md:text-right">
+              如果觉得文章对你有用，请随意赞赏
+            </div>
+          </div>
+          
+          <div class="mt-6 bg-(--color-bg-tertiary) rounded-lg p-4 border border-white/5 text-xs text-muted">
+            <p class="font-bold text-tertiary mb-1">{post.data.title}</p>
+            <p class="mb-1 text-accent/80">https://Bill.icu/posts/{post.id}</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2 pt-2 border-t border-white/5">
+              <div>
+                <span class="block text-dimmed">作者</span>
+                <span class="text-tertiary">Bill</span>
+              </div>
+              <div>
+                <span class="block text-dimmed">发布于</span>
+                <span class="text-tertiary">{post.data.date}</span>
+              </div>
+              <div>
+                <span class="block text-dimmed">更新于</span>
+                <span class="text-tertiary">2025-10-30</span>
+              </div>
+              <div>
+                <span class="block text-dimmed">许可协议</span>
+                <span class="text-tertiary">@CC BY 4.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comment Section -->
+        <div class="bg-(--color-bg-card) backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/5">
+          <div class="flex items-center gap-2 mb-6 font-bold text-white">
+            <MessageSquare size={18} /> 评论
+          </div>
+          <div class="bg-(--color-bg-tertiary) p-4 rounded-xl border border-white/5 mb-6">
+            <textarea 
+              class="w-full bg-transparent border-none text-tertiary text-sm focus:ring-0 resize-none h-24 placeholder-dimmed"
+              placeholder="编写评论..."
+            ></textarea>
+            <div class="flex justify-between items-center mt-2 border-t border-white/5 pt-2">
+              <div class="flex gap-2 text-dimmed">
+                <span class="cursor-pointer hover:text-white">B</span>
+                <span class="cursor-pointer hover:text-white">/</span>
+                <span class="cursor-pointer hover:text-white">U</span>
+                <span class="cursor-pointer hover:text-white">{'{}'}</span>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" placeholder="昵称" class="bg-(--color-bg-primary) border border-white/10 rounded px-2 py-1 text-xs text-white" />
+                <input type="text" placeholder="邮箱" class="bg-(--color-bg-primary) border border-white/10 rounded px-2 py-1 text-xs text-white hidden md:block" />
+                <button class="px-4 py-1 bg-success hover:bg-success/80 text-white text-xs rounded transition-colors">提交评论</button>
+              </div>
+            </div>
+          </div>
+          <div class="text-center text-sm text-dimmed">
+            0 条评论
+          </div>
+        </div>
+      </article>
+
+      <!-- Back to home -->
+      <div class="mt-8 text-center">
+        <a href="/" class="inline-flex items-center gap-2 text-accent hover:underline">
+          ← 返回首页
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-20 text-center text-xs text-dimmed pb-8">
+    <p>© 2025 • Bill的小破站 • Powered by Astro</p>
+    <p class="mt-1">建站 1506 天 03 时 59 分 27 秒</p>
+  </footer>
+</Layout>
+
+<style is:global>
+  .prose {
+    --tw-prose-body: var(--color-text-tertiary);
+    --tw-prose-headings: var(--color-text-primary);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-code: var(--color-text-secondary);
+    --tw-prose-pre-bg: #1e1e1e;
+  }
+  
+  .prose pre {
+    background-color: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+  }
+  
+  .prose code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  .prose h2 {
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+  }
+  
+  .prose a {
+    color: var(--color-accent);
+  }
+  
+  .prose a:hover {
+    text-decoration: underline;
+  }
+</style>

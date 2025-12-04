@@ -3,11 +3,7 @@ import { Calendar, Folder, Tag, MoreHorizontal } from 'lucide-react';
 import { Card } from './Card';
 import { MOCK_POSTS } from '../constants';
 
-interface PostListProps {
-  onPostClick: (id: string) => void;
-}
-
-export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
+export const PostList: React.FC = () => {
   return (
     <div className="space-y-4">
       {/* 2025 Year Label */}
@@ -22,7 +18,7 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
              <div className="absolute left-0 top-6 w-3 h-3 bg-(--color-bg-secondary) rounded-full border-2 border-(--color-bg-primary) sm:hidden"></div>
              
              <Card className="group cursor-pointer" noPadding>
-                <div onClick={() => onPostClick(post.id)} className="flex flex-col md:flex-row">
+                <a href={`/posts/${post.id}`} className="flex flex-col md:flex-row">
                     {post.cover && (
                         <div className="md:w-48 h-32 md:h-auto relative overflow-hidden">
                             <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
@@ -38,15 +34,8 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
                             <h2 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">{post.title}</h2>
                             <p className="text-sm text-muted line-clamp-2 mb-4">{post.summary}</p>
                         </div>
-                        {/* <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-2">
-                             <div className="flex items-center gap-2">
-                                <img src="https://picsum.photos/seed/avatar/30/30" className="w-6 h-6 rounded-full" alt="avatar" />
-                                <span className="text-xs text-muted">Bill</span>
-                             </div>
-                             <MoreHorizontal size={16} className="text-dimmed" />
-                        </div> */}
                     </div>
-                </div>
+                </a>
              </Card>
         </div>
       ))}
@@ -61,7 +50,7 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
          <div key={post.id} className="relative pl-6 sm:pl-0">
              <div className="absolute left-0 top-6 w-3 h-3 bg-(--color-bg-secondary) rounded-full border-2 border-(--color-bg-primary) sm:hidden"></div>
              <Card className="group cursor-pointer" noPadding>
-                <div onClick={() => onPostClick(post.id)} className="flex flex-col md:flex-row">
+                <a href={`/posts/${post.id}`} className="flex flex-col md:flex-row">
                     {post.cover && (
                          <div className="md:w-48 h-32 md:h-auto relative overflow-hidden shrink-0">
                             <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
@@ -74,7 +63,7 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
                          <h2 className="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">{post.title}</h2>
                          <p className="text-xs text-muted line-clamp-1">{post.summary}</p>
                     </div>
-                </div>
+                </a>
             </Card>
          </div>
        ))}

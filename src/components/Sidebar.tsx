@@ -79,10 +79,10 @@ export const Sidebar: React.FC = () => {
         </div>
         <div className="divide-y divide-white/5">
             {MOCK_POSTS.slice(0, 5).map(post => (
-                <div key={post.id} className="p-3 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
+                <a key={post.id} href={`/posts/${post.id}`} className="p-3 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
                     <span className="text-sm text-tertiary group-hover:text-accent truncate max-w-[180px]">{post.title}</span>
                     <ChevronRight size={14} className="text-dimmed group-hover:text-accent" />
-                </div>
+                </a>
             ))}
         </div>
       </Card>

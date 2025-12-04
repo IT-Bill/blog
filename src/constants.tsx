@@ -1,8 +1,19 @@
 import type { Post, Comment, Category } from './types';
 
+// 文章数据现在存储在 src/content/posts/*.md 中
+// 这里保留一个映射，用于客户端组件导航
+export const POST_SLUGS: Record<string, string> = {
+  '1': 'python-fullscreen-danmaku',
+  '2': 'mac-quickstart',
+  '3': 'hdc-guide',
+  '4': 'mac-screenshot',
+  '5': 'python-tricks',
+};
+
+// 保留 MOCK_POSTS 用于侧边栏等组件的显示
 export const MOCK_POSTS: Post[] = [
   {
-    id: '1',
+    id: 'python-fullscreen-danmaku',
     title: 'python实现全屏弹幕',
     summary: '随手记一些安全之外的技术',
     date: '2025-10-29',
@@ -11,39 +22,9 @@ export const MOCK_POSTS: Post[] = [
     tags: ['Python', 'Tech'],
     views: 1506,
     comments: 0,
-    content: `
-      <h2>前言</h2>
-      <p>最近刷视频刷到一个全屏弹幕的视频，所以我自己也做了一个。</p>
-      <p>先看视频: <a href="#" class="text-blue-400 hover:underline">https://v.douyin.com/P8WleYN3vsI/</a></p>
-      
-      <h2>代码实现</h2>
-      <p>源码如下</p>
-      
-      <div class="bg-[#1e1e1e] p-4 rounded-lg font-mono text-sm border border-gray-700 my-4">
-        <div class="flex items-center gap-2 mb-2 border-b border-gray-700 pb-2">
-           <div class="w-3 h-3 rounded-full bg-red-500"></div>
-           <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-           <div class="w-3 h-3 rounded-full bg-green-500"></div>
-           <span class="ml-2 text-gray-400">main.py</span>
-        </div>
-        <div class="text-green-400">#!/usr/bin/env python3</div>
-        <div class="text-blue-300">import</div> <div class="inline text-white">tkinter</div> <div class="inline text-blue-300">as</div> <div class="inline text-white">tk</div>
-        <div class="text-blue-300">import</div> <div class="inline text-white">random</div>
-        <div class="text-blue-300">import</div> <div class="inline text-white">sys</div>
-        <div class="text-blue-300">from</div> <div class="inline text-white">time</div> <div class="inline text-blue-300">import</div> <div class="inline text-white">sleep</div>
-        <br/>
-        <div class="text-gray-500"># 弹幕数量</div>
-        <div class="text-white">WINDOWS_NUM = 128</div>
-        <div class="text-gray-500"># 弹幕大小</div>
-        <div class="text-white">WINDOWS_SIZE = (500, 80)</div>
-      </div>
-
-      <h2>预览图</h2>
-      <p>整体脚本还是比较简单，我对它进行了封装，方便调用和二次开发拓展。核心参数就可以在代码的头部继续修改。</p>
-    `
   },
   {
-    id: '2',
+    id: 'mac-quickstart',
     title: '初入Mac，快速上手',
     summary: '默认分类',
     date: '2025-01-18',
@@ -54,7 +35,7 @@ export const MOCK_POSTS: Post[] = [
     comments: 5
   },
   {
-    id: '3',
+    id: 'hdc-guide',
     title: 'hdc使用指南',
     summary: 'Reserve基础知识',
     date: '2025-01-16',
@@ -64,7 +45,7 @@ export const MOCK_POSTS: Post[] = [
     comments: 2
   },
   {
-    id: '4',
+    id: 'mac-screenshot',
     title: 'Mac优雅的截图姿势',
     summary: '默认分类',
     date: '2025-01-01',
@@ -75,7 +56,7 @@ export const MOCK_POSTS: Post[] = [
     comments: 0
   },
   {
-    id: '5',
+    id: 'python-tricks',
     title: 'Python可以被玩到多骚?',
     summary: '奇怪的知识增加了',
     date: '2024-12-31',

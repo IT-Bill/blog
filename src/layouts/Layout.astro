@@ -1,5 +1,12 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+	title?: string;
+}
+
+const { title = "Bill的小破站" } = Astro.props;
+const pageTitle = title === "Bill的小破站" ? title : `${title} | Bill的小破站`;
 ---
 
 <!doctype html>
@@ -12,7 +19,7 @@ import '../styles/global.css';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Bill的小破站</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<!-- Shooting stars background effect -->

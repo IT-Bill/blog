@@ -1,31 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
 import { PostList } from './PostList';
-import { ArticleDetail } from './ArticleDetail';
 import { ArrowUp } from 'lucide-react';
 
 export default function BlogApp() {
-  const [currentView, setCurrentView] = useState<'home' | 'article'>('home');
-  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
-
-  const handlePostClick = (id: string) => {
-    setSelectedPostId(id);
-    setCurrentView('article');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleHomeClick = () => {
-    setCurrentView('home');
-    setSelectedPostId(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <div className="min-h-screen pb-12">
-      <div onClick={handleHomeClick} className="cursor-pointer">
+      <a href="/" className="cursor-pointer">
         <Navbar />
-      </div>
+      </a>
 
       <main className="container mx-auto px-4 md:px-6 pt-18">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -39,11 +23,7 @@ export default function BlogApp() {
 
           {/* Main Content (Scrollable) */}
           <div className="lg:col-span-9 min-h-[80vh]">
-            {currentView === 'home' ? (
-              <PostList onPostClick={handlePostClick} />
-            ) : (
-              <ArticleDetail postId={selectedPostId!} />
-            )}
+            <PostList />
           </div>
 
           {/* Mobile Sidebar */}
