@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Card } from './Card';
+import { Link } from './Link';
 import { Hash, FileText } from 'lucide-react';
 import type { Post } from '../types';
 
@@ -91,7 +92,7 @@ export const TagsList: React.FC<TagsListProps> = ({ posts }) => {
             
             <div className="ml-2 pl-3 border-l-2 border-white/10 space-y-0.5">
               {tag.posts.map(post => (
-                <a 
+                <Link 
                   key={post.id}
                   href={`/posts/${post.id}`}
                   className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors group"
@@ -106,7 +107,7 @@ export const TagsList: React.FC<TagsListProps> = ({ posts }) => {
                     )}
                     <span className="text-xs text-dimmed">{post.date}</span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

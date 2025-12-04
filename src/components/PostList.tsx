@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Folder } from 'lucide-react';
 import { Card } from './Card';
+import { Link } from './Link';
 import type { Post } from '../types';
 
 interface PostListProps {
@@ -33,7 +34,7 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
               <div className="absolute left-0 top-6 w-3 h-3 bg-(--color-bg-secondary) rounded-full border-2 border-(--color-bg-primary) sm:hidden"></div>
               
               <Card className="group cursor-pointer" noPadding>
-                <a href={`/posts/${post.id}`} className="flex flex-col md:flex-row">
+                <Link href={`/posts/${post.id}`} className="flex flex-col md:flex-row">
                   {post.cover && (
                     <div className="md:w-48 h-32 md:h-auto relative overflow-hidden shrink-0">
                       <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
@@ -50,7 +51,7 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
                       <p className="text-sm text-muted line-clamp-2 mb-4">{post.summary}</p>
                     </div>
                   </div>
-                </a>
+                </Link>
               </Card>
             </div>
           ))}

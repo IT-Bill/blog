@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Book, Coffee, Users, PenTool, Menu, Archive, Layers, Hash } from 'lucide-react';
+import { Link } from './Link';
 
 export const Navbar: React.FC = () => {
   const [showLibraryMenu, setShowLibraryMenu] = useState(false);
@@ -14,7 +15,7 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 h-10 bg-(--color-bg-card) backdrop-blur-md border-b border-white/5 px-4 md:px-8 flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <a href="/" className="text-base font-medium text-primary hover:text-accent transition-colors">Bill的小破站</a>
+        <Link href="/" className="text-base font-medium text-primary hover:text-accent transition-colors">Bill的小破站</Link>
       </div>
 
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
@@ -33,27 +34,27 @@ export const Navbar: React.FC = () => {
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-8 border-b-accent/40"></div>
             
             <div className="bg-(--color-bg-secondary)/95 backdrop-blur-md border border-accent/30 rounded-lg shadow-lg shadow-accent/10 overflow-hidden">
-              <a 
+              <Link 
                 href="/"
                 className={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors ${isActive('/') ? 'text-accent bg-accent/10' : 'text-tertiary hover:text-accent hover:bg-white/5'}`}
               >
                 <Archive size={14} />
                 文章归档
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/categories" 
                 className={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors ${isActive('/categories') ? 'text-accent bg-accent/10' : 'text-tertiary hover:text-accent hover:bg-white/5'}`}
               >
                 <Layers size={14} />
                 分类列表
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/tags" 
                 className={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors ${isActive('/tags') ? 'text-accent bg-accent/10' : 'text-tertiary hover:text-accent hover:bg-white/5'}`}
               >
                 <Hash size={14} />
                 标签列表
-              </a>
+              </Link>
             </div>
           </div>
         </div>

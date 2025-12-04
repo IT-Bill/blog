@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-import { Github, Mail, Rss, Bell, Music, ChevronRight, Hash, FileText, Layers, Link } from 'lucide-react';
+import { Github, Mail, Rss, Bell, Music, ChevronRight, Hash, FileText, Layers, Link as LinkIcon } from 'lucide-react';
 import { Card } from './Card';
+import { Link } from './Link';
 import type { Post } from '../types';
 
 interface SidebarProps {
@@ -102,10 +103,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ posts }) => {
         </div>
         <div className="">
             {posts.slice(0, 5).map(post => (
-                <a key={post.id} href={`/posts/${post.id}`} className="px-3 py-2 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
+                <Link key={post.id} href={`/posts/${post.id}`} className="px-3 py-2 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
                     <span className="text-sm text-tertiary group-hover:text-accent truncate max-w-[180px]">{post.title}</span>
-                    <Link size={12} className="text-dimmed group-hover:text-accent transition-transform duration-300 group-hover:rotate-225" />
-                </a>
+                    <LinkIcon size={12} className="text-dimmed group-hover:text-accent transition-transform duration-300 group-hover:rotate-225" />
+                </Link>
             ))}
         </div>
       </Card>

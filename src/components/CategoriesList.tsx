@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Card } from './Card';
+import { Link } from './Link';
 import { Layers, ChevronRight, FileText } from 'lucide-react';
 import type { Post } from '../types';
 
@@ -82,7 +83,7 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({ posts }) => {
             {expandedCategories.has(index) && (
               <div className="mt-1.5 ml-3 pl-3 border-l-2 border-white/10 space-y-0.5">
                 {category.posts.map(post => (
-                  <a 
+                  <Link 
                     key={post.id}
                     href={`/posts/${post.id}`}
                     className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors group/item"
@@ -92,7 +93,7 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({ posts }) => {
                       <span className="text-sm text-tertiary group-hover/item:text-accent transition-colors truncate">{post.title}</span>
                     </div>
                     <span className="text-xs text-dimmed shrink-0 ml-2">{post.date}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
