@@ -7,7 +7,7 @@ export const Sidebar: React.FC = () => {
   return (
     <div className="space-y-4">
       {/* Profile Card */}
-      <Card className="text-center pt-8 pb-6">
+      <Card className="text-center pt-4 pb-6">
         <div className="relative inline-block mb-4 group">
           <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-accent to-(--color-text-primary) mx-auto">
             <img 

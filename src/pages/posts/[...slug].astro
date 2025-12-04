@@ -21,9 +21,8 @@ const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title}>
-  <main class="container mx-auto px-4 md:px-6 pt-18">
-    <div class="max-w-4xl mx-auto">
-      <article class="animate-fade-in">
+  <div class="max-w-4xl">
+    <article class="animate-fade-in">
         <!-- Banner Image -->
         <div class="h-64 md:h-80 w-full rounded-2xl overflow-hidden mb-6 relative group">
           <img 
@@ -169,13 +168,6 @@ const { Content } = await render(post);
         </a>
       </div>
     </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="mt-20 text-center text-xs text-dimmed pb-8">
-    <p>© 2025 • Bill的小破站 • Powered by Astro</p>
-    <p class="mt-1">建站 1506 天 03 时 59 分 27 秒</p>
-  </footer>
 </Layout>
 
 <style is:global>

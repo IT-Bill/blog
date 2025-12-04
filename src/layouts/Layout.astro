@@ -1,11 +1,15 @@
 ---
 import '../styles/global.css';
+import { Navbar } from '../components/Navbar';
+import { Sidebar } from '../components/Sidebar';
+import { ArrowUp } from 'lucide-react';
 
 interface Props {
 	title?: string;
+	showSidebar?: boolean;
 }
 
-const { title = "Bill的小破站" } = Astro.props;
+const { title = "Bill的小破站", showSidebar = true } = Astro.props;
 const pageTitle = title === "Bill的小破站" ? title : `${title} | Bill的小破站`;
 ---
 
@@ -33,7 +37,57 @@ const pageTitle = title === "Bill的小破站" ? title : `${title} | Bill的小�
 			<div class="star"></div>
 			<div class="star"></div>
 		</div>
-		<slot />
+
+		<div class="min-h-screen pb-12">
+			<Navbar client:load />
+
+			<main class="container mx-auto px-4 md:px-6 pt-18">
+				<div class={showSidebar ? "grid grid-cols-1 lg:grid-cols-12 gap-6" : ""}>
+					
+					{showSidebar && (
+						<!-- Sidebar (Sticky) -->
+						<div class="lg:col-span-3 hidden lg:block">
+							<div class="sticky top-14">
+								<Sidebar client:load />
+							</div>
+						</div>
+					)}
+
+					<!-- Main Content -->
+					<div class={showSidebar ? "lg:col-span-9 min-h-[80vh]" : ""}>
+						<slot />
+					</div>
+
+					{showSidebar && (
+						<!-- Mobile Sidebar -->
+						<div class="lg:hidden">
+							<Sidebar client:load />
+						</div>
+					)}
+
+				</div>
+			</main>
+
+			<!-- Footer -->
+			<footer class="mt-20 text-center text-xs text-dimmed pb-8">
+				<p>© 2025 • Bill的小破站 • Powered by Astro</p>
+				<p class="mt-1">建站 1506 天 03 时 59 分 27 秒</p>
+			</footer>
+
+			<!-- Back to top button -->
+			<button 
+				id="back-to-top"
+				class="fixed bottom-8 right-8 p-3 bg-accent/80 hover:bg-accent text-white rounded-full shadow-lg backdrop-blur-sm transition-all z-40 hidden md:block"
+			>
+				<ArrowUp size={20} client:load />
+			</button>
+		</div>
+
+		<script>
+			document.getElementById('back-to-top')?.addEventListener('click', () => {
+				window.scrollTo({top: 0, behavior: 'smooth'});
+			});
+		</script>
 	</body>
 </html>
 
