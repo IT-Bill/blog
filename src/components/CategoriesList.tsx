@@ -50,10 +50,10 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({ posts }) => {
 
   return (
     <Card noPadding>
-      <div className="p-4 border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-purple/20 rounded-lg">
-            <Layers className="w-5 h-5 text-purple" />
+      <div className="p-3 border-b border-white/5">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 bg-purple/20 rounded-lg">
+            <Layers className="w-4 h-4 text-purple" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-primary">文章分类</h1>
@@ -62,11 +62,11 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({ posts }) => {
         </div>
       </div>
 
-      <div className="p-4 space-y-4">
+      <div className="p-3 space-y-2">
         {categories.map((category, index) => (
           <div key={category.name} className="group">
             <div 
-              className="flex items-center justify-between p-3 bg-(--color-bg-secondary)/30 rounded-lg hover:bg-(--color-bg-secondary)/50 transition-colors cursor-pointer"
+              className="flex items-center justify-between p-2 bg-(--color-bg-secondary)/30 rounded-lg hover:bg-(--color-bg-secondary)/50 transition-colors cursor-pointer"
               onClick={() => toggleCategory(index)}
             >
               <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ export const CategoriesList: React.FC<CategoriesListProps> = ({ posts }) => {
             </div>
             
             {expandedCategories.has(index) && (
-              <div className="mt-2 ml-4 pl-4 border-l-2 border-white/10 space-y-1">
+              <div className="mt-1.5 ml-3 pl-3 border-l-2 border-white/10 space-y-0.5">
                 {category.posts.map(post => (
                   <a 
                     key={post.id}

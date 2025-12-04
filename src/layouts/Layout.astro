@@ -107,9 +107,17 @@ const posts: Post[] = allPosts.map(post => ({
 		</div>
 
 		<script>
-			document.getElementById('back-to-top')?.addEventListener('click', () => {
-				window.scrollTo({top: 0, behavior: 'smooth'});
-			});
+			function initBackToTop() {
+				document.getElementById('back-to-top')?.addEventListener('click', () => {
+					window.scrollTo({top: 0, behavior: 'smooth'});
+				});
+			}
+			
+			// 初始化
+			initBackToTop();
+			
+			// 视图过渡后重新初始化
+			document.addEventListener('astro:after-swap', initBackToTop);
 		</script>
 
 		<script>

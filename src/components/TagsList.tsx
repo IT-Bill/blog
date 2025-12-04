@@ -49,21 +49,21 @@ export const TagsList: React.FC<TagsListProps> = ({ posts }) => {
 
   return (
     <Card noPadding>
-      <div className="p-4 border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-success/20 rounded-lg">
-            <Hash className="w-5 h-5 text-success" />
+      <div className="p-3 border-b border-white/5">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 bg-success/20 rounded-lg">
+            <Hash className="w-4 h-4 text-success" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-primary">文章标签</h1>
-            <p className="text-sm text-muted">共 {totalTags} 个标签</p>
+            <p className="text-sm text-muted">共 {totalTags} 个标签，{posts.length} 篇文章</p>
           </div>
         </div>
       </div>
 
       {/* 标签云 */}
-      <div className="p-4 border-b border-white/5">
-        <div className="flex flex-wrap gap-2">
+      <div className="p-3 border-b border-white/5">
+        <div className="flex flex-wrap gap-1.5">
           {tags.map((tag) => (
             <button
               key={tag.name}
@@ -78,10 +78,10 @@ export const TagsList: React.FC<TagsListProps> = ({ posts }) => {
       </div>
 
       {/* 标签详情列表 */}
-      <div className="p-4 space-y-6">
+      <div className="p-3 space-y-4">
         {tags.map((tag) => (
-          <div key={tag.name} id={`tag-${tag.name}`} className="scroll-mt-20">
-            <div className="flex items-center gap-2 mb-3">
+          <div key={tag.name} id={`tag-${tag.name}`} className="scroll-mt-16">
+            <div className="flex items-center gap-2 mb-2">
               <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-sm font-medium ${tag.color}`}>
                 <Hash className="w-3.5 h-3.5" />
                 {tag.name}
@@ -89,7 +89,7 @@ export const TagsList: React.FC<TagsListProps> = ({ posts }) => {
               <span className="text-xs text-muted">{tag.posts.length} 篇文章</span>
             </div>
             
-            <div className="ml-2 pl-4 border-l-2 border-white/10 space-y-1">
+            <div className="ml-2 pl-3 border-l-2 border-white/10 space-y-0.5">
               {tag.posts.map(post => (
                 <a 
                   key={post.id}
