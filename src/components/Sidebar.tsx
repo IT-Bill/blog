@@ -5,11 +5,11 @@ import { MOCK_POSTS, CATEGORIES } from '../constants';
 
 export const Sidebar: React.FC = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Profile Card */}
       <Card className="text-center pt-8 pb-6">
         <div className="relative inline-block mb-4 group">
-          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-accent to-(--color-text-purple) mx-auto">
+          <div className="w-24 h-24 rounded-full p-1 bg-linear-to-tr from-accent to-(--color-text-primary) mx-auto">
             <img 
               src="https://picsum.photos/seed/avatar/200/200" 
               alt="Avatar" 
@@ -52,7 +52,7 @@ export const Sidebar: React.FC = () => {
           <span className="text-xs text-white/90 shadow-sm">接着奏乐接着舞</span>
         </div>
         <div className="h-28 overflow-hidden relative">
-           <img src="https://picsum.photos/seed/music/500/300" className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt="Music Cover" />
+           <img src="https://picsum.photos/seed/music/500/300" className="w-full h-full object-cover opacity-60" alt="Music Cover" />
            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"></div>
            
            <div className="absolute bottom-3 left-3 right-3">
@@ -74,7 +74,7 @@ export const Sidebar: React.FC = () => {
       {/* Recent Posts Mini List */}
       <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
-            <span className="flex items-center gap-2 text-sm font-medium"><FileText size={16}/> 最新文章</span>
+            <span className="flex items-center gap-2 text-primary text-sm font-medium"><FileText size={16}/> 最新文章</span>
             <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
         <div className="divide-y divide-white/5">
@@ -90,7 +90,7 @@ export const Sidebar: React.FC = () => {
       {/* Categories */}
       <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
-            <span className="flex items-center gap-2 text-sm font-medium"><Layers size={16}/> 分类</span>
+            <span className="flex items-center gap-2 text-primary text-sm font-medium"><Layers size={16}/> 分类</span>
             <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
         <div className="p-2">
@@ -106,7 +106,7 @@ export const Sidebar: React.FC = () => {
        {/* Tags */}
        <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
-            <span className="flex items-center gap-2 text-sm font-medium"><Hash size={16}/> 标签</span>
+            <span className="flex items-center gap-2 text-primary text-sm font-medium"><Hash size={16}/> 标签</span>
             <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
         </div>
         <div className="p-3 flex flex-wrap gap-2">

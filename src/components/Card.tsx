@@ -8,8 +8,8 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className = '', noPadding = false }) => {
   return (
-    <div className={`bg-(--color-bg-card) border border-white/5 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:bg-(--color-bg-card-hover) ${className}`}>
-      <div className={noPadding ? '' : 'p-5'}>
+    <div className={`bg-(--color-bg-card) border border-white/5 rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:bg-(--color-bg-card-hover) ${className}`}>
+      <div className={noPadding ? '' : 'p-2'}>
         {children}
       </div>
     </div>

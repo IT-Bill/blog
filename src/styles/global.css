@@ -68,7 +68,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/src/assets/background.png');
+  background-image: url('/src/assets/background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -87,6 +87,7 @@ body::before {
   overflow: hidden;
   z-index: -1;
   pointer-events: none;
+  opacity: 0.6;
 }
 
 .shooting-stars .star {

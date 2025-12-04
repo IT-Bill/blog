@@ -9,7 +9,7 @@ interface PostListProps {
 
 export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* 2025 Year Label */}
       <div className="flex items-center gap-2">
          <span className="px-3 py-1 bg-(--color-bg-secondary)/80 rounded text-xs font-mono text-muted">2025</span>
@@ -24,12 +24,12 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
              <Card className="group cursor-pointer" noPadding>
                 <div onClick={() => onPostClick(post.id)} className="flex flex-col md:flex-row">
                     {post.cover && (
-                        <div className="md:w-64 h-48 md:h-auto relative overflow-hidden">
+                        <div className="md:w-48 h-32 md:h-auto relative overflow-hidden">
                             <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
                             {index === 0 && <div className="absolute top-2 left-2 px-2 py-0.5 bg-accent/80 backdrop-blur-sm text-[10px] text-white rounded">置顶</div>}
                         </div>
                     )}
-                    <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div className="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div className="flex items-center gap-2 text-xs text-muted mb-2">
                                 <span className="flex items-center gap-1"><Calendar size={12}/> {post.date}</span>
@@ -38,13 +38,13 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
                             <h2 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">{post.title}</h2>
                             <p className="text-sm text-muted line-clamp-2 mb-4">{post.summary}</p>
                         </div>
-                        <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-2">
+                        {/* <div className="flex items-center justify-between border-t border-white/5 pt-3 mt-2">
                              <div className="flex items-center gap-2">
                                 <img src="https://picsum.photos/seed/avatar/30/30" className="w-6 h-6 rounded-full" alt="avatar" />
                                 <span className="text-xs text-muted">Bill</span>
                              </div>
                              <MoreHorizontal size={16} className="text-dimmed" />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
              </Card>
@@ -52,7 +52,7 @@ export const PostList: React.FC<PostListProps> = ({ onPostClick }) => {
       ))}
 
       {/* 2024 Year Label */}
-      <div className="flex items-center gap-2 mt-8">
+      <div className="flex items-center gap-2 mt-4">
          <span className="px-3 py-1 bg-(--color-bg-secondary)/80 rounded text-xs font-mono text-muted">2024</span>
          <div className="h-px bg-(--color-bg-secondary) flex-1"></div>
       </div>
