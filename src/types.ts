@@ -8,8 +8,3 @@ export interface Post {
   tags?: string[];
   content?: string;
 }
-
-export interface Category {
-  name: string;
-  count: number;
-}

@@ -7,10 +7,10 @@ export const Navbar: React.FC = () => {
   const [currentPath, setCurrentPath] = useState('/');
 
   useEffect(() => {
-    setCurrentPath(window.location.pathname);
+    setCurrentPath(window.location.pathname.replace(/\/$/, '') || '/');
   }, []);
 
-  const isActive = (path: string) => currentPath === path;
+  const isActive = (path: string) => currentPath === path || currentPath === path + '/';
   const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, '') || '';
 
   return (

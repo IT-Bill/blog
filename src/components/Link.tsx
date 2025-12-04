@@ -14,7 +14,12 @@ export const Link: React.FC<LinkProps> = ({ href, children, ...props }) => {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '') || '';
   
   // 只处理以 / 开头的内部链接，外部链接和锚点链接保持不变
-  const resolvedHref = href.startsWith('/') ? `${base}${href}` : href;
+  let resolvedHref = href.startsWith('/') ? `${base}${href}` : href;
+  
+  // 移除末尾的斜杠（但保留根路径）
+  if (resolvedHref.length > 1 && resolvedHref.endsWith('/')) {
+    resolvedHref = resolvedHref.slice(0, -1);
+  }
   
   return (
     <a href={resolvedHref} {...props}>
