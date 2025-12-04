@@ -104,7 +104,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ posts }) => {
         <div className="">
             {posts.slice(0, 5).map(post => (
                 <Link key={post.id} href={`/posts/${post.id}`} className="px-3 py-2 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group">
-                    <span className="text-sm text-tertiary group-hover:text-accent truncate max-w-[180px]">{post.title}</span>
+                    <span className="text-sm text-tertiary group-hover:text-accent pr-2">{post.title}</span>
                     <LinkIcon size={12} className="text-dimmed group-hover:text-accent transition-transform duration-300 group-hover:rotate-225" />
                 </Link>
             ))}

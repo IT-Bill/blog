@@ -38,7 +38,6 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
                   {post.cover && (
                     <div className="md:w-48 h-32 md:h-auto relative overflow-hidden shrink-0">
                       <img src={post.cover} alt={post.title} className="w-full h-full object-cover" />
-                      {yearIndex === 0 && index === 0 && <div className="absolute top-2 left-2 px-2 py-0.5 bg-accent/80 backdrop-blur-sm text-[10px] text-white rounded">置顶</div>}
                     </div>
                   )}
                   <div className="p-4 flex-1 flex flex-col justify-between">

@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { Calendar, Eye, MessageSquare, Clock, ThumbsUp, DollarSign } from 'lucide-react';
+import { Calendar, Eye, MessageSquare, Clock, ThumbsUp, DollarSign, List } from 'lucide-react';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -35,11 +35,13 @@ interface Props {
 }
 
 const { post, updatedDate } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <Layout title={post.data.title}>
-  <div class="max-w-4xl">
+  <div class="flex gap-6 max-w-6xl">
+    <!-- Main Content -->
+    <div class="flex-1 min-w-0 max-w-4xl">
     <article class="animate-fade-in">
         <!-- Banner Image -->
         <div class="h-64 md:h-80 w-full rounded-2xl overflow-hidden mb-4 relative group">
@@ -153,9 +155,57 @@ const { Content } = await render(post);
         </a>
       </div>
     </div>
+
+    <!-- Table of Contents Sidebar -->
+    {headings.length > 0 && (
+      <aside class="hidden xl:block w-64 shrink-0">
+        <div class="sticky top-18">
+          <div class="bg-(--color-bg-card) backdrop-blur-md rounded-2xl p-4 border border-white/5">
+            <div class="flex items-center gap-2 mb-4 font-bold text-white text-sm">
+              <List size={16} />
+              目录
+            </div>
+            <nav class="toc-nav max-h-[70vh] overflow-y-auto">
+              <ul class="space-y-1 text-sm">
+                {headings.map((heading) => (
+                  <li>
+                    <a 
+                      href={`#${heading.slug}`}
+                      class:list={[
+                        "toc-link block py-1 text-muted hover:text-accent transition-colors truncate",
+                        { "pl-2 font-medium": heading.depth === 1 },
+                        { "pl-6": heading.depth === 2 },
+                        { "pl-10 text-xs": heading.depth === 3 },
+                        { "pl-14 text-xs": heading.depth === 4 },
+                      ]}
+                      title={heading.text}
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </aside>
+    )}
+  </div>
 </Layout>
 
 <style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 标题滚动偏移，避免被 Navbar 遮挡 */
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    scroll-margin-top: 4rem;
+  }
+
   .prose {
     --tw-prose-body: var(--color-text-tertiary);
     --tw-prose-headings: var(--color-text-primary);
@@ -196,4 +246,72 @@ const { Content } = await render(post);
   .prose a:hover {
     text-decoration: underline;
   }
+
+  /* TOC link styles */
+  .toc-link {
+    position: relative;
+  }
+
+  .toc-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 12px;
+    background-color: transparent;
+    border-radius: 1px;
+    transition: background-color 0.2s;
+  }
+
+  .toc-link:hover::before {
+    background-color: var(--color-accent);
+  }
+
+  /* TOC active state */
+  .toc-nav a.active {
+    color: var(--color-accent);
+  }
+
+  .toc-nav a.active::before {
+    background-color: var(--color-accent);
+  }
 </style>
+
+<script>
+  // Highlight current section in TOC
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-nav a');
+    const headings = document.querySelectorAll('.prose h1, .prose h2, .prose h3, .prose h4');
+    
+    if (tocLinks.length === 0 || headings.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach((link) => link.classList.remove('active'));
+            // Add active class to corresponding link
+            const id = entry.target.getAttribute('id');
+            const activeLink = document.querySelector(`.toc-nav a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-80px 0px -80% 0px',
+        threshold: 0,
+      }
+    );
+
+    headings.forEach((heading) => {
+      if (heading.id) {
+        observer.observe(heading);
+      }
+    });
+  });
+</script>
