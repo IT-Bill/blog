@@ -24,7 +24,7 @@ const { Content } = await render(post);
   <div class="max-w-4xl">
     <article class="animate-fade-in">
         <!-- Banner Image -->
-        <div class="h-64 md:h-80 w-full rounded-2xl overflow-hidden mb-6 relative group">
+        <div class="h-64 md:h-80 w-full rounded-2xl overflow-hidden mb-4 relative group">
           <img 
             src={post.data.cover || "https://picsum.photos/seed/default/800/400"} 
             class="w-full h-full object-cover" 
@@ -43,14 +43,6 @@ const { Content } = await render(post);
                 {post.data.date}
               </span>
               <span class="flex items-center gap-1">
-                <Eye size={14} />
-                {post.data.views}
-              </span>
-              <span class="flex items-center gap-1">
-                <MessageSquare size={14} />
-                {post.data.comments}
-              </span>
-              <span class="flex items-center gap-1">
                 <Clock size={14} />
                 15 分钟
               </span>
@@ -58,34 +50,24 @@ const { Content } = await render(post);
           </div>
         </div>
 
-        <!-- Tags -->
-        {post.data.tags && post.data.tags.length > 0 && (
-          <div class="flex flex-wrap gap-2 mb-6">
-            {post.data.tags.map((tag: string) => (
-              <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full">
+        <!-- Tags & Category -->
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          {post.data.category && (
+            <span class="px-2 py-0.5 bg-(--color-bg-secondary) text-tertiary text-sm rounded">
+              {post.data.category}
+            </span>
+          )}
+          {post.data.tags && post.data.tags.length > 0 && (
+            post.data.tags.map((tag: string) => (
+              <span class="px-2 py-0.5 bg-accent/10 text-accent text-sm rounded">
                 #{tag}
               </span>
-            ))}
-          </div>
-        )}
+            ))
+          )}
+        </div>
 
         <!-- Content Card -->
         <div class="bg-(--color-bg-card) backdrop-blur-md rounded-2xl p-4 md:p-6 border border-white/5 mb-6">
-          <!-- Note block -->
-          <div class="bg-success/10 border-l-4 border-(--color-border-success) p-4 rounded-r mb-8 text-sm text-tertiary">
-            <p>如果有下次，我希望我不是那个主动的人。</p>
-          </div>
-
-          <!-- Quote block -->
-          <div class="relative p-4 mb-8 text-center">
-            <div class="text-xl md:text-2xl font-serif italic text-secondary relative z-10 leading-relaxed">
-              其实我也被谁坚定地选择一次<br/>
-              人这一生，最怕突然想通又突然心痛<br/>
-              我笑着说没关系，其实已经碎了一地
-            </div>
-            <div class="absolute -top-4 -left-2 text-6xl text-white/5 font-serif">"</div>
-            <div class="absolute -bottom-10 -right-2 text-6xl text-white/5 font-serif">"</div>
-          </div>
 
           <!-- Markdown Content -->
           <div class="prose prose-invert prose-sm md:prose-base max-w-none text-tertiary">

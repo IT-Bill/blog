@@ -5,8 +5,6 @@ date: '2025-10-29'
 category: '随手记'
 cover: 'https://picsum.photos/seed/python/400/200'
 tags: ['Python', 'Tech']
-views: 1506
-comments: 0
 ---
 
 ## 前言

@@ -5,8 +5,6 @@ date: '2024-12-31'
 category: '奇怪的知识增加了'
 cover: 'https://picsum.photos/seed/pyfun/400/200'
 tags: ['Python', 'Fun']
-views: 2045
-comments: 12
 ---
 
 ## 前言

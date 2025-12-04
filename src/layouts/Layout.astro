@@ -25,8 +25,6 @@ const posts: Post[] = allPosts.map(post => ({
 	category: post.data.category,
 	cover: post.data.cover,
 	tags: post.data.tags,
-	views: post.data.views,
-	comments: post.data.comments,
 })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 

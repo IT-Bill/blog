@@ -5,8 +5,6 @@ date: '2025-01-01'
 category: '默认分类'
 cover: 'https://picsum.photos/seed/screen/400/200'
 tags: ['Mac', 'Tools']
-views: 89
-comments: 0
 ---
 
 ## Mac 原生截图

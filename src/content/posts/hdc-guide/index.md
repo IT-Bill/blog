@@ -4,8 +4,6 @@ summary: 'Reserve基础知识'
 date: '2025-01-16'
 category: 'Reserve基础知识'
 tags: ['HarmonyOS']
-views: 128
-comments: 2
 ---
 
 ## 什么是 HDC

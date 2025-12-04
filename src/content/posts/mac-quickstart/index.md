@@ -5,8 +5,6 @@ date: '2025-01-18'
 category: '默认分类'
 cover: 'https://picsum.photos/seed/mac/400/200'
 tags: ['Mac', 'Tutorial']
-views: 320
-comments: 5
 ---
 
 ## 前言

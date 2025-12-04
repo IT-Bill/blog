@@ -4,27 +4,9 @@ export interface Post {
   summary: string;
   date: string;
   category?: string;
-  cover?: string | ImageMetadata;
+  cover?: string;
   tags?: string[];
-  views: number;
-  comments: number;
   content?: string;
-}
-
-export interface ImageMetadata {
-  src: string;
-  width: number;
-  height: number;
-  format: 'png' | 'jpg' | 'jpeg' | 'tiff' | 'webp' | 'gif' | 'svg' | 'avif';
-}
-
-export interface Comment {
-  id: string;
-  author: string;
-  avatar: string;
-  date: string;
-  content: string;
-  isAdmin?: boolean;
 }
 
 export interface Category {
