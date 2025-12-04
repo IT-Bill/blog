@@ -3,20 +3,38 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Calendar, Eye, MessageSquare, Clock, ThumbsUp, DollarSign } from 'lucide-react';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  return posts.map((post) => {
+    // 获取文件的修改时间
+    const filePath = path.join(process.cwd(), 'src/content/posts', post.id, 'index.md');
+    let updatedDate = new Date();
+    try {
+      const stats = fs.statSync(filePath);
+      updatedDate = stats.mtime;
+    } catch (e) {
+      // 如果获取失败，使用发布日期
+      updatedDate = new Date(post.data.date);
+    }
+    // 转换为 UTC+8 时区的日期字符串
+    const utc8Date = new Date(updatedDate.getTime() + 8 * 60 * 60 * 1000);
+    const formattedDate = utc8Date.toISOString().split('T')[0];
+    return {
+      params: { slug: post.id },
+      props: { post, updatedDate: formattedDate },
+    };
+  });
 }
 
 interface Props {
   post: CollectionEntry<'posts'>;
+  updatedDate: string;
 }
 
-const { post } = Astro.props;
+const { post, updatedDate } = Astro.props;
 const { Content } = await render(post);
 ---
 
@@ -76,7 +94,7 @@ const { Content } = await render(post);
           
           <div class="mt-6 bg-(--color-bg-tertiary) rounded-lg p-4 border border-white/5 text-xs text-muted">
             <p class="font-bold text-tertiary mb-1">{post.data.title}</p>
-            <p class="mb-1 text-accent/80">https://Bill.icu/posts/{post.id}</p>
+            <p class="mb-1 text-accent/80">{import.meta.env.SITE + import.meta.env.BASE_URL}/{post.id}</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2 pt-2 border-t border-white/5">
               <div>
                 <span class="block text-dimmed">作者</span>
@@ -88,11 +106,11 @@ const { Content } = await render(post);
               </div>
               <div>
                 <span class="block text-dimmed">更新于</span>
-                <span class="text-tertiary">2025-10-30</span>
+                <span class="text-tertiary">{updatedDate}</span>
               </div>
               <div>
                 <span class="block text-dimmed">许可协议</span>
-                <span class="text-tertiary">@CC BY 4.0</span>
+                <span class="text-tertiary">CC BY 4.0</span>
               </div>
             </div>
           </div>
