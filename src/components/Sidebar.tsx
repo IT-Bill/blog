@@ -95,7 +95,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ posts }) => {
       <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
             <span className="flex items-center gap-2 text-primary text-sm font-medium"><FileText size={16}/> 最新文章</span>
-            <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
+            <Link href="/" className="text-xs text-dimmed cursor-pointer hover:text-accent flex items-center gap-0.5">更多 <ChevronRight size={14} /></Link>
         </div>
         <div className="">
             {posts.slice(0, 5).map(post => (
@@ -111,7 +111,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ posts }) => {
       <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
             <span className="flex items-center gap-2 text-primary text-sm font-medium"><Layers size={16}/> 分类</span>
-            <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
+            <Link href="/categories" className="text-xs text-dimmed cursor-pointer hover:text-accent flex items-center gap-0.5">更多 <ChevronRight size={14} /></Link>
         </div>
         <div className="p-1">
             {categories.map((cat, i) => (
@@ -127,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ posts }) => {
        <Card noPadding>
         <div className="p-3 border-b border-white/5 flex justify-between items-center">
             <span className="flex items-center gap-2 text-primary text-sm font-medium"><Hash size={16}/> 标签</span>
-            <span className="text-xs text-dimmed cursor-pointer hover:text-accent">更多 »</span>
+            <Link href="/tags" className="text-xs text-dimmed cursor-pointer hover:text-accent flex items-center gap-0.5">更多 <ChevronRight size={14} /></Link>
         </div>
         <div className="p-3 flex flex-wrap gap-2">
             {allTags.map((tag, i) => (
