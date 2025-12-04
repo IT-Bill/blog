@@ -73,21 +73,6 @@ const { Content } = await render(post);
           <div class="prose prose-invert prose-sm md:prose-base max-w-none text-tertiary">
             <Content />
           </div>
-
-          <!-- Copyright / Footer of article -->
-          <div class="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex gap-4">
-              <button class="flex items-center gap-2 px-4 py-2 bg-warning/10 hover:bg-warning/20 text-warning rounded-full text-sm transition-colors border border-warning/20">
-                <DollarSign size={16} /> 打赏
-              </button>
-              <button class="flex items-center gap-2 px-4 py-2 bg-(--color-bg-secondary)/30 hover:bg-(--color-bg-secondary)/50 text-tertiary rounded-full text-sm transition-colors border border-white/5">
-                <ThumbsUp size={16} /> 赞 2
-              </button>
-            </div>
-            <div class="text-xs text-dimmed text-center md:text-right">
-              如果觉得文章对你有用，请随意赞赏
-            </div>
-          </div>
           
           <div class="mt-6 bg-(--color-bg-tertiary) rounded-lg p-4 border border-white/5 text-xs text-muted">
             <p class="font-bold text-tertiary mb-1">{post.data.title}</p>

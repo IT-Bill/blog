@@ -18,7 +18,6 @@ tags: ['Python', 'Tech']
 源码如下
 
 ```python
-#!/usr/bin/env python3
 import tkinter as tk
 import random
 import sys
