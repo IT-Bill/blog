@@ -46,14 +46,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ posts }) => {
         <h2 className="text-xl font-bold text-white mb-1">Bill</h2>
         {/* <p className="text-sm text-muted mb-6">这件事很难给你解释...</p> */}
         
-        <div className="flex justify-center gap-8 mb-6 border-t border-b border-white/5 py-4">
+        <div className="flex justify-center gap-6 mb-6 border-t border-b border-white/5 py-4">
           <div className="text-center">
-            <div className="text-lg font-bold text-white">38</div>
+            <div className="text-lg font-bold text-white">{posts.length}</div>
             <div className="text-xs text-dimmed uppercase">文章</div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-white">8</div>
+            <div className="text-lg font-bold text-white">{categories.length}</div>
             <div className="text-xs text-dimmed uppercase">分类</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-white">{allTags.length}</div>
+            <div className="text-xs text-dimmed uppercase">标签</div>
           </div>
         </div>
         
