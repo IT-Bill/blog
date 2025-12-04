@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Book, Coffee, Users, PenTool, Menu, Archive, Layers, Hash, ChevronDown } from 'lucide-react';
+import { Search, Book, Coffee, Users, PenTool, Menu, Archive, Layers, Hash } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [showLibraryMenu, setShowLibraryMenu] = useState(false);

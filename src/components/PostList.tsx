@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Folder, Tag, MoreHorizontal } from 'lucide-react';
+import { Calendar, Folder } from 'lucide-react';
 import { Card } from './Card';
 import type { Post } from '../types';
 
