@@ -9,8 +9,8 @@ export const Navbar: React.FC = () => {
       </div>
 
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
-        <a href="#" className="flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors border-b-2 border-(--color-border-accent) pb-0.5">
-          <Book size={16} /> 文库
+        <a href="/" className="flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors border-b-2 border-(--color-border-accent) pb-0.5">
+          <Book size={16} />  文库
         </a>
         <a href="#" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
           <Coffee size={16} /> 小站
