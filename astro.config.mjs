@@ -11,6 +11,8 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://it-bill.github.io',
+  base: '/blog',
   integrations: [react(), sitemap(), mdx()],
 
   vite: {
