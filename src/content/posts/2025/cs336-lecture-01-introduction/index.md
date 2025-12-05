@@ -1,5 +1,5 @@
 ---
-title: 'CS336: Language Models From Scratch - Lecture 01'
+title: 'CS336: Lecture 01 - Introduction'
 summary: ''
 date: '2025-12-05'
 category: 'CS336: Language Models From Scratch'
@@ -7,16 +7,16 @@ cover: 'https://stanford-cs336.github.io/spring2025-lectures/images/course-staff
 tags: ['CS336', 'LLM']
 ---
 
-# Current Landscape of Language Models
+## Current Landscape of Language Models
 
-## Pre-neural (before 2010s)
+#### Pre-neural (before 2010s)
 
 *   **Language model to measure the entropy of English** [Shannon 1950](https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf)
     *   香农（Claude Shannon）的开创性工作，利用人类受试者对下一个字母的预测实验，首次量化了英语文本的信息熵和冗余度，奠定了自然语言统计建模的基础。
 *   **Lots of work on n-gram language models (for machine translation, speech recognition)** [Brants+ 2007](https://aclanthology.org/D07-1090.pdf)
     *   谷歌团队在机器翻译中大规模应用N-gram语言模型的工作，展示了海量数据（2万亿词）对提升模型性能的巨大作用，是统计语言模型时代的代表作。
 
-## Neural ingredients (2010s)
+#### Neural ingredients (2010s)
 
 *   **First neural language model** [Bengio+ 2003](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)
     *   Yoshua Bengio等人提出的神经概率语言模型（NPLM），首次将神经网络用于语言建模，并引入了词向量（Word Embeddings）的概念，解决了传统N-gram的数据稀疏问题。
@@ -33,7 +33,7 @@ tags: ['CS336', 'LLM']
 *   **Model parallelism** [Huang+ 2018](https://arxiv.org/abs/1811.06965)[Rajbhandari+ 2019](https://arxiv.org/abs/1910.02054)[Shoeybi+ 2019](https://arxiv.org/abs/1909.08053)
     *   这一系列工作（如GPipe, ZeRO, Megatron-LM）解决了单卡显存限制，开发了流水线并行、张量并行和优化器状态切片等技术，使得训练十亿甚至万亿参数的超大模型成为可能。
 
-## Early foundation models (late 2010s)
+#### Early foundation models (late 2010s)
 
 *   **ELMo**: pretraining with LSTMs, fine-tuning helps tasks [Peters+ 2018](https://arxiv.org/abs/1802.05365)
     *   使用双向LSTM进行预训练，生成的深层上下文词向量（Contextualized Word Embeddings）在多个NLP任务上显著优于静态词向量，开启了预训练-微调范式。
@@ -42,7 +42,7 @@ tags: ['CS336', 'LLM']
 *   **Google's T5 (11B)**: cast everything as text-to-text [Raffel+ 2019](https://arxiv.org/abs/1910.10683)
     *   提出了“Text-to-Text”的统一框架，将翻译、分类、摘要等所有NLP任务都转换为文本生成任务，并发布了C4数据集和T5模型。
 
-## Embracing scaling, more closed
+#### Embracing scaling, more closed
 
 *   **OpenAI's GPT-2 (1.5B)**: fluent text, first signs of zero-shot, staged release [Radford+ 2019](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
     *   证明了在大规模数据集上训练的语言模型在零样本（Zero-shot）设置下具备惊人的多任务迁移能力，生成的文本流畅度极高。
@@ -55,7 +55,7 @@ tags: ['CS336', 'LLM']
 *   **DeepMind's Chinchilla (70B)**: compute-optimal scaling laws [Hoffmann+ 2022](https://arxiv.org/abs/2203.15556)
     *   修正了Scaling Laws，提出在给定计算预算下，模型大小和训练数据量应等比例缩放，证明了更小但训练更充分的模型（70B）可以击败更大的模型（如Gopher 280B）。
 
-## Open models
+#### Open models
 
 *   **EleutherAI's open datasets (The Pile) and models (GPT-J)** [Gao+ 2020](https://arxiv.org/abs/2101.00027)[Wang+ 2021](https://github.com/kingoflolz/mesh-transformer-jax)
     *   The Pile是一个高质量的大规模开源文本数据集；GPT-J是基于该数据训练的60亿参数模型，证明了开源社区有能力复现GPT-3级别的效果。
@@ -72,7 +72,7 @@ tags: ['CS336', 'LLM']
 *   **AI2's OLMo 2** [Groeneveld+ 2024](https://arxiv.org/abs/2402.00838)[OLMo+ 2024](https://allenai.org/blog/olmo2)
     *   OLMo系列不仅开源权重，还开源了完整的训练数据、代码和中间检查点，致力于揭开LLM训练的“黑盒”，促进大模型科学的开放研究。
 
-## Levels of openness
+#### Levels of openness
 
 *   **Closed models (e.g., GPT-4o)**: API access only [OpenAI+ 2023](https://arxiv.org/abs/2303.08774)
     *   仅提供API接口，不公开模型权重、架构细节或训练数据，代表了商业化闭源模型的路线。
@@ -81,21 +81,59 @@ tags: ['CS336', 'LLM']
 *   **Open-source models (e.g., OLMo)**: weights and data available, paper with most details (but not necessarily the rationale, failed experiments) [Groeneveld+ 2024](https://arxiv.org/abs/2402.00838)
     *   最高程度的开放，不仅提供权重，还公开训练数据、代码和详细日志，允许社区完全复现和深入研究。
 
-## Today's frontier models
+## Course Components
 
-*   **OpenAI's o3** https://openai.com/index/openai-o3-mini/
-    *   OpenAI最新的推理模型系列，专注于强化逻辑推理和复杂问题解决能力。
-*   **Anthropic's Claude Sonnet 3.7** https://www.anthropic.com/news/claude-3-7-sonnet
-    *   Anthropic推出的混合推理模型，在编码和逻辑推理任务上表现卓越，同时保持了快速响应。
-*   **xAI's Grok 3** https://x.ai/news/grok-3
-    *   xAI的最强模型，基于庞大的算力训练，在数学、编码和通用对话能力上达到行业顶尖水平。
-*   **Google's Gemini 2.5** https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/
-    *   Google的多模态旗舰模型更新，进一步增强了推理能力（Thinking）和跨模态理解能力。
-*   **Meta's Llama 3.3** https://ai.meta.com/blog/meta-llama-3/
-    *   Llama 3系列的最新版本，继续巩固其作为开源领域最强基座模型的地位，优化了长文本和多语言性能。
-*   **DeepSeek's r1** [DeepSeek-AI+ 2025](https://arxiv.org/abs/2501.12948)
-    *   DeepSeek推出的推理增强模型，通过纯强化学习（RL）激励模型涌现出自我验证和长思维链能力，性能比肩闭源顶尖模型。
-*   **Alibaba's Qwen 2.5 Max** https://qwenlm.github.io/blog/qwen2.5-max/
-    *   Qwen系列的超大杯版本，在百科知识、代码和数学任务上表现强劲，是目前最强的国产模型之一。
-*   **Tencent's Hunyuan-T1** https://tencent.github.io/llm.hunyuan.T1/README_EN.html
-    *   腾讯混元推出的思考模型（Thinking Model），专注于通过扩展思考过程来解决复杂的科学和数学问题。
+![img](https://stanford-cs336.github.io/spring2025-lectures/images/design-decisions.png)
+
+### Basic
+
+Goal: get a basic version of the full pipeline working
+
+#### Tokenization
+
+![img](https://stanford-cs336.github.io/spring2025-lectures/images/tokenized-example.png)
+
+This course: Byte-Pair Encoding (BPE) tokenizer [[Sennrich+ 2015]](https://arxiv.org/abs/1508.07909)
+
+#### Architecture
+
+![img](https://stanford-cs336.github.io/spring2025-lectures/images/transformer-architecture.png)
+
+### Scaling Law
+
+Goal: do experiments at small scale, predict hyperparameters/loss at large scale
+
+Question: given a FLOPs budget ($C$), use a bigger model ($N$) or train on more tokens ($D$)?
+
+![img](https://stanford-cs336.github.io/spring2025-lectures/images/chinchilla-isoflop.png)
+
+TL;DR: $D^* = 20 N^*$ (e.g., 1.4B parameter model should be trained on 28B tokens)
+
+### Data
+
+Most of data on the Internet are trash!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
