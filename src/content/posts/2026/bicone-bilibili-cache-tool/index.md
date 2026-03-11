@@ -3,7 +3,7 @@ title: 'BiCone：一个专门替我盯 B 站更新、顺手防失效的工具'
 summary: '与其等喜欢的视频哪天突然“已失效”，不如提前下手。BiCone 就是我给自己做的一个 Bilibili 追更 + 自动缓存工具。'
 date: '2026-03-11'
 category: '项目笔记'
-cover: './assets/subscribe.jpg'
+cover: './assets/bicone-live-hero-desktop.png'
 tags: ['BiCone', 'Flutter', 'Bilibili', 'Android', 'Windows', 'iOS', '开发工具']
 ---
 
@@ -119,19 +119,25 @@ BiCone 反而比较像那种：**平时安静待着，等真有更新了再出�
 
 ## 界面大概长这样
 
-先放两张图，感受一下它的整体味道。
+这次我直接从 BiCone 的线上部署站抓了几张图，终于不是“拿仓库里的示意图先凑一下”了。
 
-### 订阅 / 追更入口
+### 首页 Hero 区
 
-![BiCone 订阅界面](./assets/subscribe.jpg)
+![BiCone 首页桌面截图](./assets/bicone-live-hero-desktop.png)
 
-我挺喜欢这个页面传达出来的感觉：不是那种功能堆满、按钮打架的界面，而是比较明确地告诉你——这个工具就是来帮你盯更新的。
+这个首页我还挺喜欢的，气质比较直接：不是那种一上来就塞你一堆术语，而是先把核心价值讲清楚——追更、通知、缓存，别等失效了再拍大腿。
 
-### 下载 / 缓存能力展示
+### 移动端首页
 
-![BiCone 下载界面](./assets/download.jpg)
+![BiCone 首页移动端截图](./assets/bicone-live-hero-mobile.png)
 
-这块也很直白：更新来了，不只是“我知道了”，而是“我可以开始处理了”。
+移动端也挺顺眼，至少不是那种桌面版硬挤进手机里然后一切都显得想报警的布局。
+
+### 下载区
+
+![BiCone 下载区截图](./assets/bicone-live-download-desktop.png)
+
+这块也很直白：更新来了，不只是“我知道了”，而是“我可以开始处理了”。而且平台入口放得很明确，不需要用户玩“下载按钮到底藏哪了”的小游戏。
 
 ## 技术上它其实也挺有意思
 
