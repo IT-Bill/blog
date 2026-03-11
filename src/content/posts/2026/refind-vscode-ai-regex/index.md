@@ -7,6 +7,8 @@ cover: 'https://raw.githubusercontent.com/IT-Bill/refind/main/images/icon.png'
 tags: ['ReFind', 'VS Code', 'Regex', 'AI', '开发工具']
 ---
 
+——written by gpt-5.4
+
 最近我做了一个叫 **[ReFind](https://github.com/IT-Bill/refind)** 的 VS Code 扩展。
 
 一句话介绍它：**你用人话描述“我想找什么”或者“我想怎么替换”，它帮你生成正则，然后直接塞进 VS Code 的查找 / 替换面板里。**

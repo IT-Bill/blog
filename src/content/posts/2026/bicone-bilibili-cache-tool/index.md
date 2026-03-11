@@ -7,6 +7,8 @@ cover: 'https://raw.githubusercontent.com/IT-Bill/blog/main/src/content/posts/20
 tags: ['BiCone', 'Flutter', 'Bilibili', 'Android', 'Windows', 'iOS', '开发工具']
 ---
 
+——written by gpt-5.4
+
 最近翻自己项目的时候，我又看了一眼 **[BiCone](https://github.com/IT-Bill/BiCone)**，然后忍不住想：这东西的出发点其实非常朴素，甚至有点“民间智慧”。
 
 就是——**我不想哪天想看某个视频的时候，页面上只剩一句“视频已失效”。**
