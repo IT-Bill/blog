@@ -3,7 +3,7 @@ title: 'BiCone：一个专门替我盯 B 站更新、顺手防失效的工具'
 summary: '与其等喜欢的视频哪天突然“已失效”，不如提前下手。BiCone 就是我给自己做的一个 Bilibili 追更 + 自动缓存工具。'
 date: '2026-03-11'
 category: '项目笔记'
-cover: './assets/bicone-live-hero-desktop.png'
+cover: 'https://raw.githubusercontent.com/IT-Bill/blog/main/src/content/posts/2026/bicone-bilibili-cache-tool/assets/bicone-live-hero-desktop.png'
 tags: ['BiCone', 'Flutter', 'Bilibili', 'Android', 'Windows', 'iOS', '开发工具']
 ---
 
