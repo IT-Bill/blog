@@ -8,10 +8,24 @@ import expressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import rehypeExternalLinks from "rehype-external-links";
 
+const target = process.env.DEPLOY_TARGET;
+const isGitHubPages = target === "github";
+
+const vercelUrl = process.env.VERCEL_URL;
+const vercelProjectProductionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+const site = isGitHubPages
+  ? "https://it-bill.github.io"
+  : vercelUrl
+    ? `https://${vercelUrl}`
+    : vercelProjectProductionUrl
+      ? `https://${vercelProjectProductionUrl}`
+      : "https://blog-itbill.vercel.app";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://it-bill.github.io",
-  base: "/blog",
+  site,
+  base: isGitHubPages ? "/blog" : "/",
   integrations: [
     react(),
     sitemap(),
